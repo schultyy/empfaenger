@@ -1,0 +1,29 @@
+#header{
+  height: 50px;
+  width: 100%;
+  background-color: #e9af13;
+  color: white;
+}
+
+#header-text{
+  margin-left: 150px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 28px;
+  color: white;
+}
+
+.header-button{
+  border: 1px solid;
+  width: 50px;
+  height: 45px;
+}
+
+.header-text{
+  font-size: 40px;
+  font-weight: bold;
+  vertical-align: middle;
+  text-align: center;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
