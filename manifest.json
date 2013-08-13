@@ -1,0 +1,11 @@
+{
+  "manifest_version": 2,
+
+  "name": "empfaenger",
+  "description": "Podcast client",
+  "version": "1.0",
+
+  "permissions": [],
+  "browser_action": {
+  }
+}
