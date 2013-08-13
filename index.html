@@ -10,6 +10,19 @@
   <script type="text/javascript" src="js/underscore.js"></script>
   <script type="text/javascript" src="js/backbone.js"></script>
   <script type="text/javascript" src="js/app.js"></script>
+  <script id="feed-list-template" type="text/template">
+    <ul class="thumbnails">
+      <% _.each( listItems, function( listItem ){ %>
+          <li class="span2">
+          <div class="podcast-list-item">
+              <a href="#" class="thumbnail">
+                <img data-src="<%= listItem.image %>" alt="<%= listItem.title %>" src="<%= listItem.image %>">
+              </a>
+            </div>
+          </li>
+      <% }); %>
+    </ul>
+  </script>
 </head>
 <body id="main">
   <div id="header" class="row-fluid">
@@ -22,6 +35,12 @@
       <div class="header-button">
         <p class="header-text">+</p>
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span2" id="feed-list">
+    </div>
+    <div class="span10">
     </div>
   </div>
 </body>
