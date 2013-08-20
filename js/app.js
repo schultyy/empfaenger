@@ -17,6 +17,12 @@ $(function(){
 
   var PodcastView = Backbone.View.extend({
     el: $("#feed-list"),
+    events: {
+      'click .podcast-list-item a' : 'clickHandler'
+    },
+    clickHandler: function(){
+      console.log("Boo");
+    },
     render: function(){
       var data = {"listItems": this.model.toJSON()};
       var template = _.template($("#feed-list-template").html(), data);
