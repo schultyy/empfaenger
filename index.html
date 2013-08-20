@@ -7,21 +7,16 @@
   <link rel="stylesheet" type="text/css" href="css/app.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
   <script type="text/javascript" src="js/jquery-2.0.3.js"></script>
+  <script type="text/javascript" src="js/jquery.templ.js"></script>
   <script type="text/javascript" src="js/underscore.js"></script>
   <script type="text/javascript" src="js/backbone.js"></script>
   <script type="text/javascript" src="js/app.js"></script>
-  <script id="feed-list-template" type="text/template">
-    <ul class="thumbnails">
-      <% _.each( listItems, function( listItem ){ %>
-          <li class="span2">
-            <div class="podcast-list-item">
-              <a href="#" class="thumbnail">
-                <img data-src="<%= listItem.image %>" alt="<%= listItem.title %>" src="<%= listItem.image %>">
-              </a>
-            </div>
-          </li>
-      <% }); %>
-    </ul>
+  <script id="item-template" type="text/x-jquery-tmpl">
+    <div class="podcast-list-item">
+      <a href="#" class="thumbnail">
+        <img data-src="${image}" alt="${title}" src="${image}">
+      </a>
+    </div>
   </script>
 </head>
 <body id="main">
@@ -35,9 +30,12 @@
     </div>
   </div>
   <div class="row">
-    <div class="span2" id="feed-list">
+    <div id="feed-list" class="span2">
+      <!-- <ul class="thumbnails">
+
+      </ul> -->
     </div>
-    <div class="span10">
+    <div class="span10" id="feed-content">
     </div>
   </div>
 </body>

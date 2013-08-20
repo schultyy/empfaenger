@@ -6,30 +6,56 @@ $(function(){
     model: PodcastFeed
   });
 
-  var cre = new PodcastFeed({ title: "CRE", image: "http://meta.metaebene.me/media/cre/cre-logo-1400x1400.jpg"});
+  var cre = new PodcastFeed(
+    { 
+      id: "1",
+      title: "CRE", 
+      image: "http://meta.metaebene.me/media/cre/cre-logo-1400x1400.jpg"
+    });
   var fanboys = new PodcastFeed(
   { 
+      id: "2",
       title: "fanboys", 
       image: "http://fanboys.fm/images/cover.jpg"
   });
 
   var feeds = new PodcastFeedList([cre, fanboys]);
 
-  var PodcastView = Backbone.View.extend({
-    el: $("#feed-list"),
-    events: {
-      'click .podcast-list-item a' : 'clickHandler'
+  var PodcastListView = Backbone.View.extend({
+    tagName: "ul",
+    className: "unstyled",
+    renderPodcast: function(model){
+      var podcastView = new PodcastView({model: model});
+      podcastView.render();
+      $(this.el).append(podcastView.el);
     },
-    clickHandler: function(){
-      console.log("Boo");
+    initialize: function(){
+      _.bindAll(this, "renderPodcast");
     },
     render: function(){
-      var data = {"listItems": this.model.toJSON()};
-      var template = _.template($("#feed-list-template").html(), data);
-
-      this.$el.html(template);
+      this.collection.each(this.renderPodcast);
     }
   });
-  var podcastView = new PodcastView({model: feeds});
-  podcastView.render();
+
+  var PodcastView = Backbone.View.extend({
+    tagName: "li",
+    className: "span2",
+    events: {
+      "clicked a": "clicked"
+    },
+    clicked: function(e){
+      e.preventDefault();
+      var name = this.model.get("name");
+      alert("name");
+    },
+    render: function(){
+      var template = $("#item-template");
+      var html = template.tmpl(this.model.toJSON());
+      $(this.el).append(html);
+    }
+  });
+
+  var view = new PodcastListView({collection: feeds});
+  view.render();
+  $("#feed-list").html(view.el);
 });
