@@ -13,14 +13,14 @@ $(function(){
       id: "1",
       title: "CRE", 
       image: "http://meta.metaebene.me/media/cre/cre-logo-1400x1400.jpg",
-      feed_address: "http://cre.fm/feed/m4a/"
+      episodes: ["CRE203", "CRE202","CRE201","CRE200"]
     });
   var fanboys = new PodcastFeed(
   { 
       id: "2",
       title: "fanboys", 
       image: "http://fanboys.fm/images/cover.jpg",
-      feed_address: "http://fanboys.fm/episodes.m4a.rss"
+      episodes:["Episode #133 - Guck irgendwohin", "Episode #132 - Bluetoothkabel", "Episode #131 - Käse Tetris"]
   });
 
   var feeds = new PodcastFeedList([cre, fanboys]);
@@ -50,21 +50,10 @@ $(function(){
     clicked: function(e){
       e.preventDefault();
 
-      var detailModel = new PodcastDetailViewModel({
-        title: this.model.get("title"),
-      });
 
-      $.get(this.model.feed_address, function(data){
-        results= [];
-        $(data).find("entry").each(function(){
-          var el = $(this);
-          results.push(el.find("title"));
-        });
-
-        var detailView = new PodcastDetailView({model: detailModel});
-        detailView.render();
-        $("#feed-content").html(detailView.el);
-      });
+      var detailView = new PodcastDetailView({model: this.model});
+      detailView.render();
+      $("#feed-content").html(detailView.el);
     },
     render: function(){
       var template = $("#item-template");
