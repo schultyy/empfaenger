@@ -23,14 +23,19 @@
       <div class="page-header">
         <h1>${title}</h1>
       </div>
-      <div>
-        <ul>
-          {{each episodes}}
-            <li>
-              ${$value}
-            </li>
-          {{/each}}
-        </ul>
+      <div class="row">
+        <div class="col-md-2">
+          <ul>
+            {{each episodes}}
+              <li>
+                <a href="#" class="podcast-title">${$value.get("title")}</a>
+              </li>
+            {{/each}}
+          </ul>
+        </div>
+        <div class="col-md-10">
+          <p id="podcast-episode-description"></p>
+        </div>
       </div>
     </div>
   </script>
