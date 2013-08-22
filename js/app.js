@@ -14,6 +14,7 @@ $(function(){
     { 
       id: "1",
       title: "CRE", 
+      author: "Tim Pritlove",
       image: "http://meta.metaebene.me/media/cre/cre-logo-1400x1400.jpg",
       episodes: [
         new PodcastEpisode({
@@ -42,6 +43,7 @@ $(function(){
   { 
       id: "2",
       title: "fanboys", 
+      author: "fanboys",
       image: "http://fanboys.fm/images/cover.jpg",
       episodes: [
         new PodcastEpisode({title: "Episode #133 - Guck irgendwohin"}),
