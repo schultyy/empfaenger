@@ -2,6 +2,8 @@ $(function(){
 
   var PodcastFeed = Backbone.Model.extend({ });
 
+  var PodcastDetailViewModel = Backbone.Model.extend({ });
+
   var PodcastFeedList = Backbone.Collection.extend({
     model: PodcastFeed
   });
@@ -10,13 +12,15 @@ $(function(){
     { 
       id: "1",
       title: "CRE", 
-      image: "http://meta.metaebene.me/media/cre/cre-logo-1400x1400.jpg"
+      image: "http://meta.metaebene.me/media/cre/cre-logo-1400x1400.jpg",
+      feed_address: "http://cre.fm/feed/m4a/"
     });
   var fanboys = new PodcastFeed(
   { 
       id: "2",
       title: "fanboys", 
-      image: "http://fanboys.fm/images/cover.jpg"
+      image: "http://fanboys.fm/images/cover.jpg",
+      feed_address: "http://fanboys.fm/episodes.m4a.rss"
   });
 
   var feeds = new PodcastFeedList([cre, fanboys]);
@@ -45,8 +49,22 @@ $(function(){
     },
     clicked: function(e){
       e.preventDefault();
-      var name = this.model.get("name");
-      alert("name");
+
+      var detailModel = new PodcastDetailViewModel({
+        title: this.model.get("title"),
+      });
+
+      $.get(this.model.feed_address, function(data){
+        results= [];
+        $(data).find("entry").each(function(){
+          var el = $(this);
+          results.push(el.find("title"));
+        });
+
+        var detailView = new PodcastDetailView({model: detailModel});
+        detailView.render();
+        $("#feed-content").html(detailView.el);
+      });
     },
     render: function(){
       var template = $("#item-template");
@@ -58,7 +76,9 @@ $(function(){
   var PodcastDetailView = Backbone.View.extend({
     tagName: "div",
     render: function(){
-
+      var template = $("#podcast-detail-template");
+      var html = template.tmpl(this.model.toJSON());
+      $(this.el).append(html);
     }
   });
 
