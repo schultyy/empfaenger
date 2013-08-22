@@ -25,10 +25,17 @@
       </div>
       <div class="row">
         <div class="col-md-2">
-          <ul>
+          <ul class="list-unstyled">
             {{each episodes}}
               <li>
-                <a href="#" class="podcast-title">${$value.get("title")}</a>
+                <div class="row" style="margin-top:5px;margin-bottom:5px;">
+                  <div class="col-md-10">
+                    <a href="#" class="podcast-title pull-left">${$value.get("title")}</a>
+                  </div>
+                  <div class="col-md-2">
+                    <button type="button" class="btn btn-primary btn-xs pull-right">Play</button>                  
+                  </div>
+                </div>
               </li>
             {{/each}}
           </ul>
@@ -36,6 +43,7 @@
         <div class="col-md-6">
           <h3 id="podcast-episode-title"></h3>
           <p id="podcast-episode-description"></p>
+          <button type="button" class="btn btn-success">Play episode</button>
         </div>
         <div class="col-md-4">
           <a href="#" class="thumbnail">
