@@ -23,7 +23,7 @@ $(function(){
 
   var PodcastListView = Backbone.View.extend({
     tagName: "ul",
-    className: "unstyled",
+    className: "list-group",
     renderPodcast: function(model){
       var podcastView = new PodcastView({model: model});
       podcastView.render();
@@ -39,7 +39,7 @@ $(function(){
 
   var PodcastView = Backbone.View.extend({
     tagName: "li",
-    className: "span2",
+    className: "list-group-item",
     events: {
       "click .thumbnail img": "clicked"
     },
@@ -52,6 +52,13 @@ $(function(){
       var template = $("#item-template");
       var html = template.tmpl(this.model.toJSON());
       $(this.el).append(html);
+    }
+  });
+
+  var PodcastDetailView = Backbone.View.extend({
+    tagName: "div",
+    render: function(){
+
     }
   });
 
