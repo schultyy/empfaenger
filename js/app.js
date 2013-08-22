@@ -96,6 +96,7 @@ $(function(){
       e.preventDefault();
       var title = $(e.target).html();
       var element = this.findByTitle(title);
+      $("#podcast-episode-title").text(element.get("title"));
       $("#podcast-episode-description").text(element.get("description"));
       $("#podcast-episode-thumbnail").attr("src",element.get("imageUrl"));
     },
