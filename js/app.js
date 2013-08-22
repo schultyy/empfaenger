@@ -41,7 +41,7 @@ $(function(){
     tagName: "li",
     className: "span2",
     events: {
-      "clicked a": "clicked"
+      "click .thumbnail img": "clicked"
     },
     clicked: function(e){
       e.preventDefault();
