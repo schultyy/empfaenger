@@ -41,13 +41,24 @@
     </div>
   </script>
 <div id="header" class="row">
-  <p id="header-text">
-    Empfaenger
-  </p>
+  <div class="col-md-4">
+    <p id="header-text">
+      Empfaenger
+    </p>
+  </div>
+  <div class="col-md-4">
+    <div id="add-feed-form">
+      <%= form_tag("/new_feed", method: "post") do %>
+        <%= label_tag(:feed, "New feed") %>
+        <%= text_field_tag(:feed) %>
+        <%= submit_tag("Create") %>
+      <% end %>
+    </div>
+  </div>
 </div>
 <div class="row">
-  <div id="feed-list" class="col-md-1">
+  <div id="feed-list" class="col-md-2">
   </div>
-  <div class="col-md-11" id="feed-content">
+  <div class="col-md-10" id="feed-content">
   </div>
 </div>
