@@ -14,6 +14,7 @@
 //= require underscore
 //= require backbone
 //= require bootstrap
+//= require home
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
