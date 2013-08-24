@@ -1,17 +1,17 @@
-require 'pp'
-
 class HomeController < ApplicationController
   def index
   end
   def create
-    pp params[:feed]
-    
-    @feed = Feed.new(params[:feed])
-    if @feed.save
-      pp "saved"
-      redirect "/"
+    feed = Feed.new(feed_params)
+    if feed.save
+      redirect_to "/"
      else
       render nothing: true
     end
+  end
+  private
+  
+  def feed_params
+    params.require(:feed).permit(:address)
   end
 end
