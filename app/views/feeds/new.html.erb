@@ -1,2 +1,6 @@
-<h1>Feeds#new</h1>
-<p>Find me in app/views/feeds/new.html.erb</p>
+<%= form_tag("/new_feed", method: "post", role: "form", class: "form-inline") do %>
+  <div class="form-group">
+    <%= text_field_tag(:feed, nil, :class => "form-control", :placeholder => "Create a new feed") %>
+  </div>
+  <%= submit_tag("Create", :class => "btn btn-default") %>
+<% end %>
