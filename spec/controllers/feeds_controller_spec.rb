@@ -20,7 +20,7 @@ describe FeedsController do
 
   describe "GET 'new'" do
     it "returns http success" do
-      get :index
+      get :new
       response.should render_template :new
     end
   end
