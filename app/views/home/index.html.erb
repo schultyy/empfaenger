@@ -48,13 +48,7 @@
   </div>
   <div class="col-md-4">
     <div id="add-feed-form">
-      <%= form_tag("/new_feed", method: "post", role: "form", class: "form-inline") do %>
-        <div class="form-group">
-          <%= text_field_tag(:feed, nil, :class => "form-control", :placeholder => "Create a new feed") %>
-          
-        </div>
-        <%= submit_tag("Create", :class => "btn btn-default") %>
-      <% end %>
+      <%= button_to "New feed", new_feed_path, :method => "get", :class => "btn btn-default" %>
     </div>
   </div>
 </div>

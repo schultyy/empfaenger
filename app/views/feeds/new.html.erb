@@ -1,3 +1,9 @@
+<%= form_for @feed do |f| %>
+  <div class="form-group">
+    <%= f.text_field :address, :class => "form-control", :placeholder => "Create a new feed"%>
+  </div>
+  <%= f.submit %>
+<% end %>
 <%= form_tag("/new_feed", method: "post", role: "form", class: "form-inline") do %>
   <div class="form-group">
     <%= text_field_tag(:feed, nil, :class => "form-control", :placeholder => "Create a new feed") %>
